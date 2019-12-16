@@ -1,6 +1,6 @@
 package main.binarysearch;
 
-public class BinarySearch {
+public class RecursiveBinarySearch {
 
     private Integer binarySearch(final Integer[] data, int leftBound, int rightBound, Integer element) {
         if(data == null || element == null) {
