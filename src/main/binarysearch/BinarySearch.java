@@ -1,4 +1,4 @@
-package search.binarysearch;
+package main.binarysearch;
 
 public class BinarySearch {
 
@@ -23,8 +23,8 @@ public class BinarySearch {
         }
     }
 
-    public void search(Integer[] data, Integer element) {
-        System.out.println(binarySearch(data, 0, data.length - 1, element));
+    public Integer search(Integer[] data, Integer element) {
+        return binarySearch(data, 0, data.length - 1, element);
     }
 
 

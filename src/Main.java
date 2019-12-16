@@ -1,4 +1,4 @@
-import search.binarysearch.BinarySearch;
+import main.binarysearch.BinarySearch;
 
 public class Main {
 
@@ -9,5 +9,4 @@ public class Main {
 
         binarySearch.search(data, 6);
     }
-
 }
