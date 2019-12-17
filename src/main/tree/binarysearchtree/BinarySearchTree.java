@@ -39,8 +39,8 @@ public class BinarySearchTree {
             return null;
         }
         if(foundNode.equals(root)) {
-
+            // todo implement this
         }
-        return foundNode.remove(element);
+        return foundNode.remove();
     }
 }

@@ -73,18 +73,18 @@ public class Node {
         }
     }
 
-    public Node deepestLeftLeaf() {
+    public Node deepestLeft() {
         if(left == null) {
             return this;
         }
-        return left.deepestLeftLeaf();
+        return left.deepestLeft();
     }
 
-    public Node deepestRightLeaf() {
+    public Node deepestRight() {
         if(right == null) {
             return this;
         }
-        return right.deepestLeftLeaf();
+        return right.deepestLeft();
     }
 
     public Node find(int element) {
@@ -98,6 +98,10 @@ public class Node {
             return right.find(element);
         }
         return null;
+    }
+
+    public boolean isOnlyChild() {
+        return (left == null && right != null) || (left != null && right == null);
     }
 
     @Override
@@ -123,23 +127,53 @@ public class Node {
                 '}';
     }
 
-    public Node remove(int element) {
-//        if (getValue() == element) {
-//            if (getRight() != null) {
-//                Node deepestLeftLeaf = getRight().deepestLeftLeaf();
-//                setValue(deepestLeftLeaf.getValue());
-//                if (getRight().getValue().equals(deepestLeftLeaf.getValue())) {
-//                    deepestLeftLeaf.getParent().setRight(null);
-//                } else {
-//                    deepestLeftLeaf.getParent().setLeft(null);
-//                }
-//            }
-//            return this;
-//        } else {
-//            // recursion
-//            getLeft().remove(element)
-//        }
-//        return remove(element);
-        throw new IllegalStateException("Not implemented exception");
+    public Node remove() {
+        // 1st case - is leaf
+        if(isLeaf()) {
+            if(getParent().getRight() != null && getParent().getRight().equals(this)) {
+                getParent().setRight(null);
+            } else {
+                getParent().setLeft(null);
+            }
+            setParent(null);
+        } else if (getLeft() == null || getRight() == null) {
+            // 2nd case - one child
+            if(getLeft() != null) {
+                getLeft().setParent(getParent());
+                if(getParent().getLeft() != null && getParent().getLeft().equals(this)) {
+                    getParent().setLeft(getLeft());
+                } else {
+                    getParent().setRight(getLeft());
+                }
+            } else {
+                getRight().setParent(getParent());
+                if(getParent().getLeft() != null && getParent().getLeft().equals(this)) {
+                    getParent().setLeft(getRight());
+                } else {
+                    getParent().setRight(getRight());
+                }
+            }
+            setParent(null);
+        } else {
+            // 3rd case - two children
+            Node deepestLeft = getRight().deepestLeft();
+            if(deepestLeft.isLeaf()) {
+                if(getRight().equals(deepestLeft)) {
+                    setValue(deepestLeft.getValue());
+                    deepestLeft.setValue(null);
+                    deepestLeft.setParent(null);
+                    setRight(null);
+                } else {
+                    setValue(deepestLeft.getValue());
+                    deepestLeft.getParent().setLeft(null);
+                    deepestLeft.setParent(null);
+                }
+            } else {
+                final int deepestInteger = deepestLeft.getValue();
+                deepestLeft.remove();
+                setValue(deepestInteger);
+            }
+        }
+        return this;
     }
 }

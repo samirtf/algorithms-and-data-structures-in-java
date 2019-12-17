@@ -89,4 +89,106 @@ public class BinarySearchTreeTest {
         Assert.assertEquals(true, true);
     }
 
+    @Test
+    public void removeOne() {
+        binarySearchTree.insert(new Node(2));
+        binarySearchTree.insert(new Node(1));
+        binarySearchTree.insert(new Node(3));
+        Assert.assertEquals(new Node(1), binarySearchTree.remove(1));
+    }
+
+    @Test
+    public void removeTwo() {
+        binarySearchTree.insert(new Node(2));
+        binarySearchTree.insert(new Node(1));
+        binarySearchTree.insert(new Node(3));
+        Assert.assertEquals(new Node(2), binarySearchTree.remove(2));
+    }
+
+    @Test
+    public void removeThree() {
+        binarySearchTree.insert(new Node(2));
+        binarySearchTree.insert(new Node(1));
+        binarySearchTree.insert(new Node(3));
+        Assert.assertEquals(new Node(3), binarySearchTree.remove(3));
+    }
+
+    @Test
+    public void remove04() {
+        binarySearchTree.insert(new Node(2));
+        binarySearchTree.insert(new Node(1));
+        Assert.assertEquals(new Node(1), binarySearchTree.remove(1));
+    }
+
+    @Test
+    public void remove05() {
+        binarySearchTree.insert(new Node(2));
+        binarySearchTree.insert(new Node(3));
+        Assert.assertEquals(new Node(3), binarySearchTree.remove(3));
+    }
+
+    @Test
+    public void remove06() {
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(2));
+        binarySearchTree.insert(new Node(1));
+        Assert.assertEquals(new Node(3), binarySearchTree.remove(3));
+    }
+
+    @Test
+    public void remove07() {
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(2));
+        binarySearchTree.insert(new Node(1));
+        Assert.assertEquals(new Node(2), binarySearchTree.remove(2));
+    }
+
+    @Test
+    public void remove08() {
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(2));
+        binarySearchTree.insert(new Node(1));
+        Assert.assertEquals(new Node(1), binarySearchTree.remove(1));
+    }
+
+    @Test
+    public void remove09() {
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(4));
+        binarySearchTree.insert(new Node(5));
+        binarySearchTree.insert(new Node(7));
+        binarySearchTree.insert(new Node(6));
+        Assert.assertEquals(new Node(4), binarySearchTree.remove(4));
+    }
+
+    @Test
+    public void remove10() {
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(4));
+        binarySearchTree.insert(new Node(5));
+        binarySearchTree.insert(new Node(7));
+        binarySearchTree.insert(new Node(6));
+        Assert.assertEquals(new Node(5), binarySearchTree.remove(5));
+    }
+
+    @Test
+    public void remove11() {
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(4));
+        binarySearchTree.insert(new Node(5));
+        binarySearchTree.insert(new Node(7));
+        binarySearchTree.insert(new Node(6));
+        Assert.assertEquals(new Node(7), binarySearchTree.remove(7));
+    }
+
+    @Test
+    public void remove12() {
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(4));
+        binarySearchTree.insert(new Node(5));
+        binarySearchTree.insert(new Node(7));
+        binarySearchTree.insert(new Node(6));
+        Assert.assertEquals(new Node(6), binarySearchTree.remove(6));
+    }
+
 }
