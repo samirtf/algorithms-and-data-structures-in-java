@@ -17,20 +17,20 @@ public class RecursiveBinarySearchTest {
 
     @Test
     public void search() {
-        Assert.assertEquals(new Integer(0), recursiveBinarySearch.search(data, 2));
-        Assert.assertEquals(new Integer(1), recursiveBinarySearch.search(data, 3));
-        Assert.assertEquals(new Integer(2), recursiveBinarySearch.search(data, 5));
-        Assert.assertEquals(new Integer(3), recursiveBinarySearch.search(data, 6));
-        Assert.assertEquals(new Integer(4), recursiveBinarySearch.search(data, 8));
-        Assert.assertEquals(new Integer(5), recursiveBinarySearch.search(data, 9));
-        Assert.assertEquals(new Integer(6), recursiveBinarySearch.search(data, 10));
-        Assert.assertEquals(new Integer(7), recursiveBinarySearch.search(data, 12));
-        Assert.assertEquals(new Integer(8), recursiveBinarySearch.search(data, 13));
-        Assert.assertEquals(new Integer(9), recursiveBinarySearch.search(data, 15));
-        Assert.assertEquals(new Integer(10), recursiveBinarySearch.search(data, 16));
-        Assert.assertEquals(new Integer(11), recursiveBinarySearch.search(data, 17));
-        Assert.assertEquals(new Integer(12), recursiveBinarySearch.search(data, 19));
-        Assert.assertEquals(new Integer(13), recursiveBinarySearch.search(data, 20));
-        Assert.assertEquals(new Integer(14), recursiveBinarySearch.search(data, 22));
+        Assert.assertEquals(Integer.valueOf(0), recursiveBinarySearch.search(data, 2));
+        Assert.assertEquals(Integer.valueOf(1), recursiveBinarySearch.search(data, 3));
+        Assert.assertEquals(Integer.valueOf(2), recursiveBinarySearch.search(data, 5));
+        Assert.assertEquals(Integer.valueOf(3), recursiveBinarySearch.search(data, 6));
+        Assert.assertEquals(Integer.valueOf(4), recursiveBinarySearch.search(data, 8));
+        Assert.assertEquals(Integer.valueOf(5), recursiveBinarySearch.search(data, 9));
+        Assert.assertEquals(Integer.valueOf(6), recursiveBinarySearch.search(data, 10));
+        Assert.assertEquals(Integer.valueOf(7), recursiveBinarySearch.search(data, 12));
+        Assert.assertEquals(Integer.valueOf(8), recursiveBinarySearch.search(data, 13));
+        Assert.assertEquals(Integer.valueOf(9), recursiveBinarySearch.search(data, 15));
+        Assert.assertEquals(Integer.valueOf(10), recursiveBinarySearch.search(data, 16));
+        Assert.assertEquals(Integer.valueOf(11), recursiveBinarySearch.search(data, 17));
+        Assert.assertEquals(Integer.valueOf(12), recursiveBinarySearch.search(data, 19));
+        Assert.assertEquals(Integer.valueOf(13), recursiveBinarySearch.search(data, 20));
+        Assert.assertEquals(Integer.valueOf(14), recursiveBinarySearch.search(data, 22));
     }
 }

@@ -17,20 +17,20 @@ public class IterativeBinarySearchTest {
 
     @Test
     public void search() {
-        Assert.assertEquals(new Integer(0), iterativeBinarySearch.search(data, 2));
-        Assert.assertEquals(new Integer(1), iterativeBinarySearch.search(data, 3));
-        Assert.assertEquals(new Integer(2), iterativeBinarySearch.search(data, 5));
-        Assert.assertEquals(new Integer(3), iterativeBinarySearch.search(data, 6));
-        Assert.assertEquals(new Integer(4), iterativeBinarySearch.search(data, 8));
-        Assert.assertEquals(new Integer(5), iterativeBinarySearch.search(data, 9));
-        Assert.assertEquals(new Integer(6), iterativeBinarySearch.search(data, 10));
-        Assert.assertEquals(new Integer(7), iterativeBinarySearch.search(data, 12));
-        Assert.assertEquals(new Integer(8), iterativeBinarySearch.search(data, 13));
-        Assert.assertEquals(new Integer(9), iterativeBinarySearch.search(data, 15));
-        Assert.assertEquals(new Integer(10), iterativeBinarySearch.search(data, 16));
-        Assert.assertEquals(new Integer(11), iterativeBinarySearch.search(data, 17));
-        Assert.assertEquals(new Integer(12), iterativeBinarySearch.search(data, 19));
-        Assert.assertEquals(new Integer(13), iterativeBinarySearch.search(data, 20));
-        Assert.assertEquals(new Integer(14), iterativeBinarySearch.search(data, 22));
+        Assert.assertEquals(Integer.valueOf(0), iterativeBinarySearch.search(data, 2));
+        Assert.assertEquals(Integer.valueOf(1), iterativeBinarySearch.search(data, 3));
+        Assert.assertEquals(Integer.valueOf(2), iterativeBinarySearch.search(data, 5));
+        Assert.assertEquals(Integer.valueOf(3), iterativeBinarySearch.search(data, 6));
+        Assert.assertEquals(Integer.valueOf(4), iterativeBinarySearch.search(data, 8));
+        Assert.assertEquals(Integer.valueOf(5), iterativeBinarySearch.search(data, 9));
+        Assert.assertEquals(Integer.valueOf(6), iterativeBinarySearch.search(data, 10));
+        Assert.assertEquals(Integer.valueOf(7), iterativeBinarySearch.search(data, 12));
+        Assert.assertEquals(Integer.valueOf(8), iterativeBinarySearch.search(data, 13));
+        Assert.assertEquals(Integer.valueOf(9), iterativeBinarySearch.search(data, 15));
+        Assert.assertEquals(Integer.valueOf(10), iterativeBinarySearch.search(data, 16));
+        Assert.assertEquals(Integer.valueOf(11), iterativeBinarySearch.search(data, 17));
+        Assert.assertEquals(Integer.valueOf(12), iterativeBinarySearch.search(data, 19));
+        Assert.assertEquals(Integer.valueOf(13), iterativeBinarySearch.search(data, 20));
+        Assert.assertEquals(Integer.valueOf(14), iterativeBinarySearch.search(data, 22));
     }
 }
