@@ -191,4 +191,48 @@ public class BinarySearchTreeTest {
         Assert.assertEquals(new Node(6), binarySearchTree.remove(6));
     }
 
+
+    @Test
+    public void remove13() {
+        binarySearchTree.insert(new Node(5));
+        binarySearchTree.insert(new Node(1));
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(2));
+        Assert.assertEquals(new Node(1), binarySearchTree.remove(1));
+        binarySearchTree.size();
+    }
+
+    @Test
+    public void remove14() {
+        binarySearchTree.insert(new Node(5));
+        binarySearchTree.insert(new Node(1));
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(2));
+        binarySearchTree.insert(new Node(0));
+        Assert.assertEquals(new Node(1), binarySearchTree.remove(1));
+        binarySearchTree.size();
+    }
+
+    @Test
+    public void remove15() {
+        binarySearchTree.insert(new Node(7));
+        binarySearchTree.insert(new Node(6));
+        binarySearchTree.insert(new Node(4));
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(5));
+        Assert.assertEquals(new Node(4), binarySearchTree.remove(4));
+        binarySearchTree.size();
+    }
+
+    @Test
+    public void remove16() {
+        binarySearchTree.insert(new Node(7));
+        binarySearchTree.insert(new Node(6));
+        binarySearchTree.insert(new Node(4));
+        binarySearchTree.insert(new Node(3));
+        binarySearchTree.insert(new Node(5));
+        Assert.assertEquals(new Node(6), binarySearchTree.remove(6));
+        binarySearchTree.size();
+    }
+
 }
