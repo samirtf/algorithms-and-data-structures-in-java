@@ -1,5 +1,11 @@
 package main.algorithms.sort;
 
+/**
+ * Loop invariant:
+ * At the start of each iteration of the for loop of lines 1–8, the subarray
+ * A[1..j - 1] consists of the elements originally in A[1..j - 1], but in sorted
+ * order
+ */
 public class InsertionSort {
 
     public void sort(final int[] data) {
