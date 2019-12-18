@@ -2,37 +2,37 @@ package main.tree.binarysearchtree;
 
 import java.util.Objects;
 
-public class Node {
-    private Node parent;
-    private Node left;
-    private Node right;
+public class BstNode {
+    private BstNode parent;
+    private BstNode left;
+    private BstNode right;
     private Integer value;
 
-    public Node(final Integer value) {
+    public BstNode(final Integer value) {
         this.value = value;
     }
 
-    public Node getParent() {
+    public BstNode getParent() {
         return parent;
     }
 
-    public void setParent(Node parent) {
+    public void setParent(BstNode parent) {
         this.parent = parent;
     }
 
-    public Node getLeft() {
+    public BstNode getLeft() {
         return left;
     }
 
-    public void setLeft(Node left) {
+    public void setLeft(BstNode left) {
         this.left = left;
     }
 
-    public Node getRight() {
+    public BstNode getRight() {
         return right;
     }
 
-    public void setRight(Node right) {
+    public void setRight(BstNode right) {
         this.right = right;
     }
 
@@ -55,7 +55,7 @@ public class Node {
         return 1 + (left != null ? left.size() : 0) + (right != null ? right.size() : 0);
     }
 
-    public void insert(final Node node) {
+    public void insert(final BstNode node) {
         if(node.getValue() < this.getValue()) {
             if(left == null) {
                 left = node;
@@ -73,21 +73,21 @@ public class Node {
         }
     }
 
-    public Node deepestLeft() {
+    public BstNode deepestLeft() {
         if(left == null) {
             return this;
         }
         return left.deepestLeft();
     }
 
-    public Node deepestRight() {
+    public BstNode deepestRight() {
         if(right == null) {
             return this;
         }
         return right.deepestLeft();
     }
 
-    public Node find(int element) {
+    public BstNode find(int element) {
         if(element == getValue()) {
             return this;
         }
@@ -108,7 +108,7 @@ public class Node {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Node node = (Node) o;
+        BstNode node = (BstNode) o;
         return Objects.equals(value, node.value);
     }
 
@@ -127,7 +127,7 @@ public class Node {
                 '}';
     }
 
-    public Node remove() {
+    public BstNode remove() {
         // 1st case - is leaf
         if(isLeaf()) {
             if(getParent().getRight() != null && getParent().getRight().equals(this)) {
@@ -156,7 +156,7 @@ public class Node {
             setParent(null);
         } else {
             // 3rd case - two children
-            Node deepestLeft = getRight().deepestLeft();
+            BstNode deepestLeft = getRight().deepestLeft();
             if(deepestLeft.isLeaf()) {
                 if(getRight().equals(deepestLeft)) {
                     setValue(deepestLeft.getValue());

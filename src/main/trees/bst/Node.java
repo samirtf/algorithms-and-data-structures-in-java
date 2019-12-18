@@ -10,7 +10,7 @@ public class Node {
     private Node right;
     private Integer value;
 
-    public Node(Integer values) {
+    public Node(Integer value) {
         this.value = value;
     }
 
@@ -59,6 +59,16 @@ public class Node {
         return search(node.getRight(), element);
     }
 
+    public int size(Node node) {
+        if(node == null) {
+            return 0;
+        }
+        if(node.isLeaf()) {
+            return 1;
+        }
+        return 1 + (node.hasLeft() ? node.size(node.getLeft()) : 0) + (node.hasRight() ? node.size(node.getRight()) : 0);
+    }
+
     public void insert(final Node node, Integer element) {
         if(node == null || element == null || node.getValue().equals(element)) {
             return;
@@ -82,14 +92,15 @@ public class Node {
         }
     }
 
-    public void travel(Node node, TravelType travelType) {
+    public String travel(Node node, TravelType travelType) {
+        String travel = "";
         if(travelType == TravelType.INORDER) {
             if(node.hasLeft()) {
-                node.travel(node.getLeft(), travelType);
+                travel += node.travel(node.getLeft(), travelType);
             }
-            System.out.println(node.getValue() + " ");
+            travel += node.getValue() + " ";
             if(node.hasRight()) {
-                node.travel(node.getRight(), travelType);
+                travel += node.travel(node.getRight(), travelType);
             }
         } else if (travelType == TravelType.PREORDER) {
             System.out.println(node.getValue() + " ");
@@ -108,6 +119,7 @@ public class Node {
             }
             System.out.println(node.getValue() + " ");
         }
+        return travel;
     }
 
     public boolean hasLeft() {
