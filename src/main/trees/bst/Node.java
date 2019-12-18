@@ -54,9 +54,9 @@ public class Node {
             return node;
         }
         if(element < node.getValue()) {
-            return search(node.getLeft(), element);
+            return node.search(node.getLeft(), element);
         }
-        return search(node.getRight(), element);
+        return node.search(node.getRight(), element);
     }
 
     public int size(Node node) {
@@ -79,7 +79,7 @@ public class Node {
             } else {
                 final Node newNode = new Node(element);
                 newNode.setParent(node);
-                node.setLeft(new Node(element));
+                node.setLeft(newNode);
             }
         } else {
             if(node.hasRight()) {
@@ -87,7 +87,7 @@ public class Node {
             } else {
                 final Node newNode = new Node(element);
                 newNode.setParent(node);
-                node.setRight(new Node(element));
+                node.setRight(newNode);
             }
         }
     }
@@ -103,21 +103,21 @@ public class Node {
                 travel += node.travel(node.getRight(), travelType);
             }
         } else if (travelType == TravelType.PREORDER) {
-            System.out.println(node.getValue() + " ");
+            travel += node.getValue() + " ";
             if(node.hasLeft()) {
-                node.travel(node.getLeft(), travelType);
+                travel += node.travel(node.getLeft(), travelType);
             }
             if(node.hasRight()) {
-                node.travel(node.getRight(), travelType);
+                travel += node.travel(node.getRight(), travelType);
             }
         } else if (travelType == TravelType.POSTORDER) {
             if(node.hasLeft()) {
-                node.travel(node.getLeft(), travelType);
+                travel += node.travel(node.getLeft(), travelType);
             }
             if(node.hasRight()) {
-                node.travel(node.getRight(), travelType);
+                travel += node.travel(node.getRight(), travelType);
             }
-            System.out.println(node.getValue() + " ");
+            travel += node.getValue() + " ";
         }
         return travel;
     }
@@ -151,6 +151,20 @@ public class Node {
         return nodes;
     }
 
+    public Node remove(final Node node, Integer element) {
+        if(node.isLeaf()) {
+            if(node.getParent() != null) {
+                if(node.getParent().hasLeft() && node.getParent().getLeft().equals(node)) {
+                    node.getParent().setLeft(null);
+                } else {
+                    node.getParent().setRight(null);
+                }
+            }
+            node.setParent(null);
+        }
+        return node;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -167,10 +181,10 @@ public class Node {
     @Override
     public String toString() {
         return "Node{" +
-                "parent=" + parent +
-                ", left=" + left +
-                ", right=" + right +
-                ", value=" + value +
+                "parent=" + (parent != null? parent.getValue() : "") +
+                ", left=" + (left != null? left.getValue() : "") +
+                ", right=" + (right != null? right.getValue() : "") +
+                ", value=" + (value != null? value : "") +
                 '}';
     }
 }

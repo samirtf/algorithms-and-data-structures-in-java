@@ -27,6 +27,24 @@ public class RecursiveBinarySearchTree {
         root.insert(root, element);
     }
 
+    public Node remove(Integer element) {
+        if(element == null) {
+            throw new IllegalArgumentException("Element must not be null.");
+        }
+        if(root == null) {
+            return null;
+        }
+        final Node search = root.search(root, element);
+        if(search == null) {
+            return null;
+        }
+        final Node removed = root.remove(search, element);
+        if(root.equals(removed)) {
+            root = null;
+        }
+        return removed;
+    }
+
     public List<Node> searchAllLeaves() {
         if(root == null) {
             return new ArrayList<>();
@@ -41,7 +59,7 @@ public class RecursiveBinarySearchTree {
         if(root == null) {
             return "";
         }
-        return root.travel(root, travelType);
+        return root.travel(root, travelType).trim();
     }
 
     public int size() {
