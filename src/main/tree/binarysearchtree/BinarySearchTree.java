@@ -2,9 +2,9 @@ package main.tree.binarysearchtree;
 
 public class BinarySearchTree {
 
-    private Node root;
+    private BstNode root;
 
-    public void insert(final Node node) {
+    public void insert(final BstNode node) {
         if(root == null) {
             root = node;
             return;
@@ -23,18 +23,18 @@ public class BinarySearchTree {
         return root.size();
     }
 
-    public Node find(int element) {
+    public BstNode find(int element) {
         if(root == null) {
             return null;
         }
         return root.find(element);
     }
 
-    public Node remove(int element) {
+    public BstNode remove(int element) {
         if(root == null) {
             return null;
         }
-        Node foundNode = find(element);
+        BstNode foundNode = find(element);
         if(foundNode == null) {
             return null;
         }
