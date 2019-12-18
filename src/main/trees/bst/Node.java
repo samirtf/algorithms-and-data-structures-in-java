@@ -50,6 +50,9 @@ public class Node {
         if(node == null || element == null) {
             return null;
         }
+        if(node.getValue().equals(element)) {
+            return node;
+        }
         if(element < node.getValue()) {
             return search(node.getLeft(), element);
         }
