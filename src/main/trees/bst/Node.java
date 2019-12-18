@@ -10,7 +10,7 @@ public class Node {
     private Node right;
     private Integer value;
 
-    public Node(Integer values) {
+    public Node(Integer value) {
         this.value = value;
     }
 
@@ -50,10 +50,23 @@ public class Node {
         if(node == null || element == null) {
             return null;
         }
-        if(element < node.getValue()) {
-            return search(node.getLeft(), element);
+        if(node.getValue().equals(element)) {
+            return node;
         }
-        return search(node.getRight(), element);
+        if(element < node.getValue()) {
+            return node.search(node.getLeft(), element);
+        }
+        return node.search(node.getRight(), element);
+    }
+
+    public int size(Node node) {
+        if(node == null) {
+            return 0;
+        }
+        if(node.isLeaf()) {
+            return 1;
+        }
+        return 1 + (node.hasLeft() ? node.size(node.getLeft()) : 0) + (node.hasRight() ? node.size(node.getRight()) : 0);
     }
 
     public void insert(final Node node, Integer element) {
@@ -66,7 +79,7 @@ public class Node {
             } else {
                 final Node newNode = new Node(element);
                 newNode.setParent(node);
-                node.setLeft(new Node(element));
+                node.setLeft(newNode);
             }
         } else {
             if(node.hasRight()) {
@@ -74,37 +87,39 @@ public class Node {
             } else {
                 final Node newNode = new Node(element);
                 newNode.setParent(node);
-                node.setRight(new Node(element));
+                node.setRight(newNode);
             }
         }
     }
 
-    public void travel(Node node, TravelType travelType) {
+    public String travel(Node node, TravelType travelType) {
+        String travel = "";
         if(travelType == TravelType.INORDER) {
             if(node.hasLeft()) {
-                node.travel(node.getLeft(), travelType);
+                travel += node.travel(node.getLeft(), travelType);
             }
-            System.out.println(node.getValue() + " ");
+            travel += node.getValue() + " ";
             if(node.hasRight()) {
-                node.travel(node.getRight(), travelType);
+                travel += node.travel(node.getRight(), travelType);
             }
         } else if (travelType == TravelType.PREORDER) {
-            System.out.println(node.getValue() + " ");
+            travel += node.getValue() + " ";
             if(node.hasLeft()) {
-                node.travel(node.getLeft(), travelType);
+                travel += node.travel(node.getLeft(), travelType);
             }
             if(node.hasRight()) {
-                node.travel(node.getRight(), travelType);
+                travel += node.travel(node.getRight(), travelType);
             }
         } else if (travelType == TravelType.POSTORDER) {
             if(node.hasLeft()) {
-                node.travel(node.getLeft(), travelType);
+                travel += node.travel(node.getLeft(), travelType);
             }
             if(node.hasRight()) {
-                node.travel(node.getRight(), travelType);
+                travel += node.travel(node.getRight(), travelType);
             }
-            System.out.println(node.getValue() + " ");
+            travel += node.getValue() + " ";
         }
+        return travel;
     }
 
     public boolean hasLeft() {
@@ -136,6 +151,20 @@ public class Node {
         return nodes;
     }
 
+    public Node remove(final Node node, Integer element) {
+        if(node.isLeaf()) {
+            if(node.getParent() != null) {
+                if(node.getParent().hasLeft() && node.getParent().getLeft().equals(node)) {
+                    node.getParent().setLeft(null);
+                } else {
+                    node.getParent().setRight(null);
+                }
+            }
+            node.setParent(null);
+        }
+        return node;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -152,10 +181,10 @@ public class Node {
     @Override
     public String toString() {
         return "Node{" +
-                "parent=" + parent +
-                ", left=" + left +
-                ", right=" + right +
-                ", value=" + value +
+                "parent=" + (parent != null? parent.getValue() : "") +
+                ", left=" + (left != null? left.getValue() : "") +
+                ", right=" + (right != null? right.getValue() : "") +
+                ", value=" + (value != null? value : "") +
                 '}';
     }
 }
