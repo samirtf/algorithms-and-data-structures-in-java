@@ -38,8 +38,9 @@ public class RecursiveBinarySearchTree {
         if(search == null) {
             return null;
         }
-        final Node removed = root.remove(search, element);
+        final Node removed = root.remove(search);
         if(root.equals(removed)) {
+
             root = null;
         }
         return removed;
@@ -71,5 +72,9 @@ public class RecursiveBinarySearchTree {
 
     public void clear() {
         root = null;
+    }
+
+    public Node getRoot() {
+        return root;
     }
 }

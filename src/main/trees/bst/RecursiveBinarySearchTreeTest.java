@@ -110,14 +110,14 @@ public class RecursiveBinarySearchTreeTest {
     }
 
     @Test
-    public void removeRoot() {
+    public void removeRootLeaf() {
         binarySearchTree.insert(15);
         Assert.assertEquals(new Node(15), binarySearchTree.remove(15));
         Assert.assertEquals(0, binarySearchTree.size());
     }
 
     @Test
-    public void remove() {
+    public void removeLeaf() {
         binarySearchTree.insert(15);
         binarySearchTree.insert(20);
         binarySearchTree.insert(10);
@@ -146,6 +146,110 @@ public class RecursiveBinarySearchTreeTest {
 
         Assert.assertEquals(new Node(6), binarySearchTree.remove(6));
         Assert.assertEquals(4, binarySearchTree.size());
+    }
+
+    @Test
+    public void removeOnlyOneChild() {
+        binarySearchTree.insert(15);
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(6);
+        binarySearchTree.insert(12);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(7);
+        binarySearchTree.insert(8);
+        binarySearchTree.insert(18);
+        binarySearchTree.insert(22);
+
+        Assert.assertEquals(new Node(7), binarySearchTree.remove(7));
+        Assert.assertEquals(9, binarySearchTree.size());
+    }
+
+    @Test
+    public void removeRootOnlyOneRightChild() {
+        binarySearchTree.insert(15);
+        binarySearchTree.insert(16);
+        Assert.assertEquals(new Node(15), binarySearchTree.remove(15));
+        Assert.assertEquals(1, binarySearchTree.size());
+    }
+
+    @Test
+    public void removeRootOnlyOneLeftChild() {
+        binarySearchTree.insert(15);
+        binarySearchTree.insert(14);
+        Assert.assertEquals(new Node(15), binarySearchTree.remove(15));
+        Assert.assertEquals(1, binarySearchTree.size());
+    }
+
+    @Test
+    public void removeRootOnlyTwoLeftGrandChild() {
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(14);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(15);
+        Assert.assertEquals(new Node(20), binarySearchTree.remove(20));
+        Assert.assertEquals(3, binarySearchTree.size());
+    }
+
+    @Test
+    public void removeRootOnlyOneLeftGrandChild() {
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(14);
+        binarySearchTree.insert(5);
+        Assert.assertEquals(new Node(20), binarySearchTree.remove(20));
+        Assert.assertEquals(2, binarySearchTree.size());
+    }
+
+    @Test
+    public void removeRootOnlyTwoRightGrandChild() {
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(25);
+        binarySearchTree.insert(22);
+        binarySearchTree.insert(26);
+        Assert.assertEquals(new Node(20), binarySearchTree.remove(20));
+        Assert.assertEquals(3, binarySearchTree.size());
+    }
+
+    @Test
+    public void removeRootOnlyOneRightGrandChild() {
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(25);
+        binarySearchTree.insert(26);
+        Assert.assertEquals(new Node(20), binarySearchTree.remove(20));
+        Assert.assertEquals(2, binarySearchTree.size());
+    }
+
+    @Test
+    public void removeRootWithTwoChildren() {
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(19);
+        binarySearchTree.insert(26);
+        Assert.assertEquals(new Node(20), binarySearchTree.remove(20));
+        Assert.assertEquals(2, binarySearchTree.size());
+        Assert.assertEquals(Integer.valueOf(26), binarySearchTree.getRoot().getValue());
+    }
+
+    @Test
+    public void removeRootWithTwoChildren1() {
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(26);
+        binarySearchTree.insert(25);
+        Assert.assertEquals(new Node(20), binarySearchTree.remove(20));
+        Assert.assertEquals(3, binarySearchTree.size());
+        Assert.assertEquals(Integer.valueOf(25), binarySearchTree.getRoot().getValue());
+
+    }
+
+    @Test
+    public void removeRootWithTwoChildren2() {
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(26);
+        binarySearchTree.insert(11);
+        Assert.assertEquals(new Node(20), binarySearchTree.remove(20));
+        Assert.assertEquals(3, binarySearchTree.size());
+        Assert.assertEquals(Integer.valueOf(26), binarySearchTree.getRoot().getValue());
     }
 
 }
