@@ -1,7 +1,7 @@
 package main.trees.bst;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class RecursiveBinarySearchTree {
     private Node root;
@@ -76,5 +76,19 @@ public class RecursiveBinarySearchTree {
 
     public Node getRoot() {
         return root;
+    }
+
+    public int height() {
+        return root.height(root);
+    }
+
+    public int maxWidth() {
+        final Map<Integer, Integer> map = new HashMap<>();
+        if(root == null) {
+            return 0;
+        }
+        root.maxWidth(root, 0, map);
+        final Integer max = map.entrySet().stream().max(Map.Entry.comparingByValue()).get().getValue();
+        return max;
     }
 }
