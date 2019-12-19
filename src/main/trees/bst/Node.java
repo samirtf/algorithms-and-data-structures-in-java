@@ -134,6 +134,13 @@ public class Node {
         return left == null && right == null;
     }
 
+    public Node deepestLeft(Node node) {
+        if(node.hasLeft()) {
+            return node.deepestLeft(node.getLeft());
+        }
+        return node;
+    }
+
     public List<Node> searchAllLeaves(Node node) {
         List<Node> nodes = new ArrayList<>();
         if(node.isLeaf()) {
@@ -151,7 +158,7 @@ public class Node {
         return nodes;
     }
 
-    public Node remove(final Node node, Integer element) {
+    public Node remove(final Node node) {
         if(node.isLeaf()) {
             if(node.getParent() != null) {
                 if(node.getParent().hasLeft() && node.getParent().getLeft().equals(node)) {
@@ -161,6 +168,41 @@ public class Node {
                 }
             }
             node.setParent(null);
+        } else if(node.hasLeft() && node.hasRight()) {
+            final Node deepestLeft = node.getRight().deepestLeft(node.getRight());
+            final Integer currentValue = node.getValue();
+            node.setValue(deepestLeft.getValue());
+            deepestLeft.setValue(currentValue);
+            return node.remove(deepestLeft);
+        } else {
+            // only one child
+            final Node child = node.hasLeft() ? node.getLeft() : node.getRight();
+            if(node.getParent() != null) {
+                if(node.getParent().hasLeft() && node.getParent().getLeft().equals(node)) {
+                    node.getParent().setLeft(child);
+                } else {
+                    node.getParent().setRight(child);
+                }
+                child.setParent(node.getParent());
+            } else {
+                final Integer currentValue = node.getValue();
+                node.setValue(child.getValue());
+                if(child.hasLeft()) {
+                    node.setLeft(child.getLeft());
+                    child.setLeft(null);
+                } else {
+                    node.setLeft(null);
+                }
+                if(child.hasRight()) {
+                    node.setRight(child.getRight());
+                    child.setRight(null);
+                } else {
+                    node.setRight(null);
+                }
+                child.setParent(null);
+                child.setValue(currentValue);
+                return child;
+            }
         }
         return node;
     }
