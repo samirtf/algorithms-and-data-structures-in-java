@@ -252,4 +252,101 @@ public class RecursiveBinarySearchTreeTest {
         Assert.assertEquals(Integer.valueOf(26), binarySearchTree.getRoot().getValue());
     }
 
+    @Test
+    public void height1() {
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(26);
+        binarySearchTree.insert(11);
+        Assert.assertEquals(3, binarySearchTree.height());
+    }
+
+    @Test
+    public void height2() {
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(21);
+        binarySearchTree.insert(22);
+        binarySearchTree.insert(23);
+        binarySearchTree.insert(26);
+        binarySearchTree.insert(25);
+        binarySearchTree.insert(27);
+        Assert.assertEquals(6, binarySearchTree.height());
+    }
+
+    @Test
+    public void maxWidth() {
+        binarySearchTree.insert(50);
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(70);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(30);
+        binarySearchTree.insert(60);
+        binarySearchTree.insert(80);
+        binarySearchTree.insert(75);
+        binarySearchTree.insert(90);
+        Assert.assertEquals(4, binarySearchTree.maxWidth());
+    }
+
+    @Test
+    public void maxWidth2() {
+        binarySearchTree.insert(50);
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(70);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(30);
+        binarySearchTree.insert(60);
+        binarySearchTree.insert(80);
+        binarySearchTree.insert(75);
+        binarySearchTree.insert(90);
+        binarySearchTree.insert(35);
+        binarySearchTree.insert(65);
+        Assert.assertEquals(4, binarySearchTree.maxWidth());
+    }
+
+    @Test
+    public void maxWidth3() {
+        binarySearchTree.insert(50);
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(70);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(30);
+        binarySearchTree.insert(60);
+        binarySearchTree.insert(80);
+        binarySearchTree.insert(75);
+        binarySearchTree.insert(90);
+        binarySearchTree.insert(35);
+        binarySearchTree.insert(65);
+        binarySearchTree.insert(5);
+        Assert.assertEquals(5, binarySearchTree.maxWidth());
+    }
+
+    @Test
+    public void maxWidth4() {
+        binarySearchTree.insert(50);
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(70);
+        Assert.assertEquals(2, binarySearchTree.maxWidth());
+    }
+
+    @Test
+    public void maxWidth5() {
+        binarySearchTree.insert(50);
+        Assert.assertEquals(1, binarySearchTree.maxWidth());
+    }
+
+    @Test
+    public void maxWidth6() {
+        Assert.assertEquals(0, binarySearchTree.maxWidth());
+    }
+
+    @Test
+    public void maxWidth7() {
+        binarySearchTree.insert(50);
+        binarySearchTree.insert(70);
+        binarySearchTree.insert(80);
+        binarySearchTree.insert(75);
+        binarySearchTree.insert(90);
+        Assert.assertEquals(2, binarySearchTree.maxWidth());
+    }
+
 }

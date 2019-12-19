@@ -2,6 +2,7 @@ package main.trees.bst;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Node {
@@ -205,6 +206,21 @@ public class Node {
             }
         }
         return node;
+    }
+
+    public int height(Node node) {
+        return 1 + Math.max(node.hasLeft() ? node.height(node.getLeft()) : 0, node.hasRight() ? node.height(node.getRight()):0);
+    }
+
+    public void maxWidth(Node node, int currentHeight, Map<Integer, Integer> map) {
+        final Integer value = map.get(currentHeight);
+        map.put(currentHeight, (value != null ? value : 0) + 1);
+        if(node.hasLeft()){
+            node.maxWidth(node.getLeft(), currentHeight + 1, map);
+        }
+        if(node.hasRight()){
+            node.maxWidth(node.getRight(), currentHeight + 1, map);
+        }
     }
 
     @Override
