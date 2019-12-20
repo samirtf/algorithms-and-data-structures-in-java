@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class RecursiveBinarySearchTree {
+
     private Node root;
 
     public Node search(Integer element) {
@@ -90,5 +91,12 @@ public class RecursiveBinarySearchTree {
         root.maxWidth(root, 0, map);
         final Integer max = map.entrySet().stream().max(Map.Entry.comparingByValue()).get().getValue();
         return max;
+    }
+
+    public boolean isFullBinaryTree() {
+        if(root == null) {
+            return false;
+        }
+        return root.isFullBinaryTree(root);
     }
 }
