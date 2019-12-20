@@ -99,4 +99,11 @@ public class RecursiveBinarySearchTree {
         }
         return root.isFullBinaryTree(root);
     }
+
+    public int sumAllNodes() {
+        if(root == null) {
+            return 0;
+        }
+        return root.sumAllNodes(root);
+    }
 }

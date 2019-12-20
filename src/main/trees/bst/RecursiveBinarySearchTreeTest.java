@@ -403,4 +403,46 @@ public class RecursiveBinarySearchTreeTest {
         Assert.assertEquals(true, binarySearchTree.isFullBinaryTree());
     }
 
+    @Test
+    public void sumAllNodes1() {
+        Assert.assertEquals(0, binarySearchTree.sumAllNodes());
+    }
+
+    @Test
+    public void sumAllNodes2() {
+        binarySearchTree.insert(0);
+        Assert.assertEquals(0, binarySearchTree.sumAllNodes());
+    }
+
+    @Test
+    public void sumAllNodes3() {
+        binarySearchTree.insert(10);
+        Assert.assertEquals(10, binarySearchTree.sumAllNodes());
+    }
+
+    @Test
+    public void sumAllNodes4() {
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(5);
+        Assert.assertEquals(15, binarySearchTree.sumAllNodes());
+    }
+
+    @Test
+    public void sumAllNodes5() {
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(2);
+        Assert.assertEquals(17, binarySearchTree.sumAllNodes());
+    }
+
+    @Test
+    public void sumAllNodes6() {
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(2);
+        binarySearchTree.insert(3);
+        binarySearchTree.insert(20);
+        Assert.assertEquals(40, binarySearchTree.sumAllNodes());
+    }
+
 }

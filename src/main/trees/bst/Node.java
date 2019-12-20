@@ -254,4 +254,8 @@ public class Node {
         }
         return false;
     }
+
+    public int sumAllNodes(Node node) {
+        return node.getValue() + (node.hasLeft() ? node.sumAllNodes(node.getLeft()) : 0) + (node.hasRight() ? node.sumAllNodes(node.getRight()) : 0);
+    }
 }
