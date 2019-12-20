@@ -245,4 +245,13 @@ public class Node {
                 ", value=" + (value != null? value : "") +
                 '}';
     }
+
+    boolean isFullBinaryTree(Node node) {
+        if(node.isLeaf()) {
+            return true;
+        } else if(node.hasLeft() && node.hasRight()){
+            return node.isFullBinaryTree(node.getLeft()) && node.isFullBinaryTree(node.getRight());
+        }
+        return false;
+    }
 }
