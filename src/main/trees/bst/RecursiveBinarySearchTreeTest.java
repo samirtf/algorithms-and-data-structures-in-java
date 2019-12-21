@@ -505,4 +505,49 @@ public class RecursiveBinarySearchTreeTest {
         Assert.assertEquals(0.666, binarySearchTree.subTreesProportions().getRight(), 0.001);
     }
 
+    @Test
+    public void travelInvertedInOrder() {
+        binarySearchTree.insert(15);
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(6);
+        binarySearchTree.insert(12);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(7);
+        binarySearchTree.insert(8);
+        binarySearchTree.insert(18);
+        binarySearchTree.insert(22);
+        Assert.assertEquals("22 20 18 15 12 10 8 7 6 5", binarySearchTree.insertedTravel(TravelType.INORDER));
+    }
+
+    @Test
+    public void travelInvertedPreOrder() {
+        binarySearchTree.insert(15);
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(6);
+        binarySearchTree.insert(12);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(7);
+        binarySearchTree.insert(8);
+        binarySearchTree.insert(18);
+        binarySearchTree.insert(22);
+        Assert.assertEquals("15 10 6 5 7 8 12 20 18 22", binarySearchTree.travel(TravelType.PREORDER));
+    }
+
+    @Test
+    public void travelInvertedPosOrder() {
+        binarySearchTree.insert(15);
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(6);
+        binarySearchTree.insert(12);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(7);
+        binarySearchTree.insert(8);
+        binarySearchTree.insert(18);
+        binarySearchTree.insert(22);
+        Assert.assertEquals("5 8 7 6 12 10 18 22 20 15", binarySearchTree.travel(TravelType.POSTORDER));
+    }
+
 }
