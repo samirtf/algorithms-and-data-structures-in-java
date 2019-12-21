@@ -535,6 +535,19 @@ public class RecursiveBinarySearchTreeTest {
         Assert.assertEquals("22 18 20 12 8 7 5 6 10 15", binarySearchTree.insertedTravel(TravelType.PREORDER));
     }
 
-
+    @Test
+    public void travelInvertedPosOrder() {
+        binarySearchTree.insert(15);
+        binarySearchTree.insert(20);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(6);
+        binarySearchTree.insert(12);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(7);
+        binarySearchTree.insert(8);
+        binarySearchTree.insert(18);
+        binarySearchTree.insert(22);
+        Assert.assertEquals("15 20 22 18 10 12 6 7 8 5", binarySearchTree.insertedTravel(TravelType.POSTORDER));
+    }
 
 }
