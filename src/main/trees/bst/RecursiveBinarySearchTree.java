@@ -64,6 +64,16 @@ public class RecursiveBinarySearchTree {
         return root.travel(root, travelType).trim();
     }
 
+    public String insertedTravel(TravelType travelType) {
+        if(travelType == null) {
+            throw new IllegalArgumentException("Travel type must not be null.");
+        }
+        if(root == null) {
+            return "";
+        }
+        return root.travel(root, travelType, true).trim();
+    }
+
     public int size() {
         if(root == null) {
             return 0;

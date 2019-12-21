@@ -271,4 +271,72 @@ public class Node {
     }
 
 
+    public String travel(Node node, TravelType travelType, boolean inverted) {
+        String travel = "";
+        if(travelType == TravelType.INORDER) {
+            if(node.hasLeft()) {
+                if(inverted) {
+                    travel = node.travel(node.getLeft(), travelType, true) + travel;
+                } else {
+                    travel += node.travel(node.getLeft(), travelType);
+                }
+            }
+            if(inverted) {
+                travel = " " + node.getValue() + travel;
+            } else {
+                travel += node.getValue() + " ";
+            }
+
+            if(node.hasRight()) {
+                if(inverted) {
+                    travel = node.travel(node.getRight(), travelType, true) + travel;
+                } else {
+                    travel += node.travel(node.getRight(), travelType);
+                }
+            }
+        } else if (travelType == TravelType.PREORDER) {
+            if(inverted) {
+                travel = node.getValue() + " " + travel;
+            } else {
+                travel += node.getValue() + " ";
+            }
+            if(node.hasLeft()) {
+                if(inverted) {
+                    travel = node.travel(node.getLeft(), travelType) + travel;
+                } else {
+                    travel += node.travel(node.getLeft(), travelType);
+                }
+            }
+            if(node.hasRight()) {
+                if(inverted) {
+                    travel = node.travel(node.getRight(), travelType) + travel;
+                } else {
+                    travel += node.travel(node.getRight(), travelType);
+                }
+
+            }
+        } else if (travelType == TravelType.POSTORDER) {
+            if(node.hasLeft()) {
+                if(inverted) {
+                    travel = node.travel(node.getLeft(), travelType) + travel;
+                } else {
+                    travel += node.travel(node.getLeft(), travelType);
+                }
+            }
+            if(node.hasRight()) {
+                if(inverted) {
+                    travel = node.travel(node.getRight(), travelType) + travel;
+                } else {
+                    travel += node.travel(node.getRight(), travelType);
+                }
+            }
+            if(inverted) {
+                travel =  node.getValue() + " " + travel;
+            } else {
+                travel += node.getValue() + " ";
+            }
+
+        }
+        return travel;
+    }
 }
