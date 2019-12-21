@@ -550,4 +550,60 @@ public class RecursiveBinarySearchTreeTest {
         Assert.assertEquals("15 20 22 18 10 12 6 7 8 5", binarySearchTree.insertedTravel(TravelType.POSTORDER));
     }
 
+    @Test
+    public void proportionsOfSubTreeSum1() {
+        Assert.assertEquals(new ProportionTuple(0, 0), binarySearchTree.subTreesProportionsSum());
+    }
+
+    @Test
+    public void proportionsOfSubTreeSum2() {
+        binarySearchTree.insert(0);
+        Assert.assertEquals(new ProportionTuple(0, 0), binarySearchTree.subTreesProportionsSum());
+    }
+
+    @Test
+    public void proportionsOfSubTreeSum3() {
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(0);
+        Assert.assertEquals(new ProportionTuple(0, 0), binarySearchTree.subTreesProportionsSum());
+    }
+
+    @Test
+    public void proportionsOfSubTreeSum4() {
+        binarySearchTree.insert(10);
+        Assert.assertEquals(new ProportionTuple(0, 0), binarySearchTree.subTreesProportionsSum());
+    }
+
+    @Test
+    public void proportionsOfSubTreeSum5() {
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(5);
+        Assert.assertEquals(new ProportionTuple(1, 0), binarySearchTree.subTreesProportionsSum());
+    }
+
+    @Test
+    public void proportionsOfSubTreeSum6() {
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(2);
+        Assert.assertEquals(new ProportionTuple(1, 0), binarySearchTree.subTreesProportionsSum());
+    }
+
+    @Test
+    public void proportionsOfSubTreeSum7() {
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(15);
+        Assert.assertEquals(new ProportionTuple(0.25, 0.75), binarySearchTree.subTreesProportionsSum());
+    }
+
+    @Test
+    public void proportionsOfSubTreeSum8() {
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(15);
+        binarySearchTree.insert(30);
+        Assert.assertEquals(new ProportionTuple(0.1, 0.9), binarySearchTree.subTreesProportionsSum());
+    }
+
 }

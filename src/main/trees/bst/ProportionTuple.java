@@ -1,5 +1,7 @@
 package main.trees.bst;
 
+import java.util.Objects;
+
 public class ProportionTuple {
 
     private double left;
@@ -24,6 +26,20 @@ public class ProportionTuple {
 
     public void setRight(double right) {
         this.right = right;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProportionTuple that = (ProportionTuple) o;
+        return Double.compare(that.left, left) == 0 &&
+                Double.compare(that.right, right) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(left, right);
     }
 
     @Override
