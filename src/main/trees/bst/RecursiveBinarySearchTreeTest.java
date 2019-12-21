@@ -445,4 +445,64 @@ public class RecursiveBinarySearchTreeTest {
         Assert.assertEquals(40, binarySearchTree.sumAllNodes());
     }
 
+    @Test
+    public void subTreesProportions1() {
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(15);
+        Assert.assertEquals(0.5, binarySearchTree.subTreesProportions().getLeft(), 0.001);
+        Assert.assertEquals(0.5, binarySearchTree.subTreesProportions().getRight(), 0.001);
+    }
+
+    @Test
+    public void subTreesProportions2() {
+        binarySearchTree.insert(3);
+        binarySearchTree.insert(2);
+        binarySearchTree.insert(1);
+        Assert.assertEquals(1.0, binarySearchTree.subTreesProportions().getLeft(), 0.001);
+        Assert.assertEquals(0.0, binarySearchTree.subTreesProportions().getRight(), 0.001);
+    }
+
+    @Test
+    public void subTreesProportions3() {
+        binarySearchTree.insert(4);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(3);
+        binarySearchTree.insert(2);
+        binarySearchTree.insert(1);
+        Assert.assertEquals(0.75, binarySearchTree.subTreesProportions().getLeft(), 0.001);
+        Assert.assertEquals(0.25, binarySearchTree.subTreesProportions().getRight(), 0.001);
+    }
+
+    @Test
+    public void subTreesProportions4() {
+        binarySearchTree.insert(4);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(7);
+        binarySearchTree.insert(8);
+        binarySearchTree.insert(9);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(3);
+        binarySearchTree.insert(2);
+        binarySearchTree.insert(1);
+        Assert.assertEquals(0.375, binarySearchTree.subTreesProportions().getLeft(), 0.001);
+        Assert.assertEquals(0.625, binarySearchTree.subTreesProportions().getRight(), 0.001);
+    }
+
+    @Test
+    public void subTreesProportions5() {
+        binarySearchTree.insert(4);
+        binarySearchTree.insert(5);
+        binarySearchTree.insert(7);
+        binarySearchTree.insert(8);
+        binarySearchTree.insert(9);
+        binarySearchTree.insert(10);
+        binarySearchTree.insert(11);
+        binarySearchTree.insert(3);
+        binarySearchTree.insert(2);
+        binarySearchTree.insert(1);
+        Assert.assertEquals(0.333, binarySearchTree.subTreesProportions().getLeft(), 0.001);
+        Assert.assertEquals(0.666, binarySearchTree.subTreesProportions().getRight(), 0.001);
+    }
+
 }
