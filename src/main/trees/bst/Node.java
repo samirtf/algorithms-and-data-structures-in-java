@@ -302,14 +302,14 @@ public class Node {
             }
             if(node.hasLeft()) {
                 if(inverted) {
-                    travel = node.travel(node.getLeft(), travelType) + travel;
+                    travel = node.travel(node.getLeft(), travelType, true) + travel;
                 } else {
                     travel += node.travel(node.getLeft(), travelType);
                 }
             }
             if(node.hasRight()) {
                 if(inverted) {
-                    travel = node.travel(node.getRight(), travelType) + travel;
+                    travel = node.travel(node.getRight(), travelType, true) + travel;
                 } else {
                     travel += node.travel(node.getRight(), travelType);
                 }
@@ -318,14 +318,14 @@ public class Node {
         } else if (travelType == TravelType.POSTORDER) {
             if(node.hasLeft()) {
                 if(inverted) {
-                    travel = node.travel(node.getLeft(), travelType) + travel;
+                    travel = node.travel(node.getLeft(), travelType, true) + travel;
                 } else {
                     travel += node.travel(node.getLeft(), travelType);
                 }
             }
             if(node.hasRight()) {
                 if(inverted) {
-                    travel = node.travel(node.getRight(), travelType) + travel;
+                    travel = node.travel(node.getRight(), travelType, true) + travel;
                 } else {
                     travel += node.travel(node.getRight(), travelType);
                 }
