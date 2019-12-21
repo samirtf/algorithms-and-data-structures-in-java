@@ -339,4 +339,15 @@ public class Node {
         }
         return travel;
     }
+
+    public Tuple<Integer> subTreesProportionsSum(Node node) {
+        final Tuple<Integer> tuple = new Tuple<Integer>(0, 0);
+        if(node.hasLeft()) {
+            tuple.setLeft(node.sumAllNodes(node.getLeft()));
+        }
+        if(node.hasRight()) {
+            tuple.setRight(node.sumAllNodes(node.getRight()));
+        }
+        return tuple;
+    }
 }
