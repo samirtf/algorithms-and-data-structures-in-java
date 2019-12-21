@@ -258,4 +258,17 @@ public class Node {
     public int sumAllNodes(Node node) {
         return node.getValue() + (node.hasLeft() ? node.sumAllNodes(node.getLeft()) : 0) + (node.hasRight() ? node.sumAllNodes(node.getRight()) : 0);
     }
+
+    public Tuple<Integer> subTreesProportions(Node node) {
+        final Tuple<Integer> tuple = new Tuple<Integer>(0, 0);
+        if(node.hasLeft()) {
+            tuple.setLeft(node.size(node.getLeft()));
+        }
+        if(node.hasRight()) {
+            tuple.setRight(node.size(node.getRight()));
+        }
+        return tuple;
+    }
+
+
 }

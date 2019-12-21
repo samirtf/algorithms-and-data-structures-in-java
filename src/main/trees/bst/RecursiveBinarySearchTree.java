@@ -106,4 +106,12 @@ public class RecursiveBinarySearchTree {
         }
         return root.sumAllNodes(root);
     }
+
+    public ProportionTuple subTreesProportions() {
+        if(root == null) {
+            return new ProportionTuple(0, 0);
+        }
+        final Tuple<Integer> tuple = root.subTreesProportions(root);
+        return new ProportionTuple(tuple.getLeft()*1.0 / (tuple.getLeft() + tuple.getRight()), tuple.getRight()*1.0 / (tuple.getLeft() + tuple.getRight()));
+    }
 }
